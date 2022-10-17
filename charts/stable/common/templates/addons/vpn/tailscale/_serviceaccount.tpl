@@ -6,5 +6,5 @@ Tailscale SA
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: tailscale-sa-{{ include "common.names.fullname" $ }}
+  name: tailscale-{{ include "common.names.fullname" $ }}
 {{- end -}}
