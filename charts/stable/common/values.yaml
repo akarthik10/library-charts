@@ -484,7 +484,7 @@ addons:
     enabled: false
 
     # -- Specify the VPN type. Valid options are `openvpn`, `wireguard`, `tailscale` and `gluetun`.
-    type: tailscale
+    type: openvpn
 
     # -- OpenVPN specific configuration
     # @default -- See below
