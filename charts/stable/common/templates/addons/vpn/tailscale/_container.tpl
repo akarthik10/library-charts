@@ -16,7 +16,7 @@ env:
   - name: TS_USERSPACE
     value: false
   - name: TS_EXTRA_ARGS
-    value: "--hostname={{ include "common.names.fullname" $ }}"    
+    value: "--hostname={{ include "common.names.fullname" $ }}"
   {{- . | toYaml | nindent 2 }}
 {{- end }}
 {{- with .Values.addons.vpn.envFrom }}
