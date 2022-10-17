@@ -483,8 +483,8 @@ addons:
     # -- Enable running a VPN in the pod to route traffic through a VPN
     enabled: false
 
-    # -- Specify the VPN type. Valid options are `openvpn`, `wireguard` and `gluetun`.
-    type: openvpn
+    # -- Specify the VPN type. Valid options are `openvpn`, `wireguard`, `tailscale` and `gluetun`.
+    type: tailscale
 
     # -- OpenVPN specific configuration
     # @default -- See below
@@ -513,6 +513,22 @@ addons:
         tag: v1.0.20210914
         # -- Specify the WireGuard image pull policy
         pullPolicy: IfNotPresent
+
+    # -- Tailscale specific configuration
+    # @default -- See below
+    tailscale:
+      image:
+        # -- Specify the TS image
+        repository: ghcr.io/tailscale/tailscale
+        # -- Specify the TS image tag
+        tag: v1.32
+        # -- Specify the TS image pull policy
+        pullPolicy: IfNotPresent
+      env:
+        - name: TS_USERSPACE
+          value: "false"       
+        - name: TS_AUTH_KEY
+          value: fake
 
     # -- Gluetun specific configuration
     # -- Make sure to read the [documentation](https://github.com/qdm12/gluetun/wiki) to see how to configure this addon!
