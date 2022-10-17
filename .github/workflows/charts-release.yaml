@@ -81,6 +81,7 @@ jobs:
         commit_user_email: k8s-at-home[bot]@users.noreply.github.com
         commit_author: k8s-at-home[bot] <k8s-at-home[bot]@users.noreply.github.com>
         file_pattern: charts/**/
+        disable_globbing: true
 
   release-charts:
     runs-on: ubuntu-20.04
