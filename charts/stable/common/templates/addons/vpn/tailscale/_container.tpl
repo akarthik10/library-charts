@@ -11,6 +11,12 @@ securityContext:
 {{- end }}
 {{- with .Values.addons.vpn.env }}
 env:
+  - name: TS_KUBE_SECRET
+    value: tailscale-{{ include "common.names.fullname" $ }}
+  - name: TS_USERSPACE
+    value: false
+  - name: TS_EXTRA_ARGS
+    value: "--hostname={{ include "common.names.fullname" $ }}"    
   {{- . | toYaml | nindent 2 }}
 {{- end }}
 {{- with .Values.addons.vpn.envFrom }}
