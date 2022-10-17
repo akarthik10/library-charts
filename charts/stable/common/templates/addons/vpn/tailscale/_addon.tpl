@@ -8,4 +8,9 @@ Template to render Tailscale addon. It will add the container to the list of add
   {{- if $container -}}
     {{- $_ := set .Values.additionalContainers "addon-tailscale" $container -}}
   {{- end -}}
+
+  {{- include "common.addon.tailscale.role" . | nindent 0 }}
+  {{- include "common.addon.tailscale.serviceaccount" . | nindent 0 }}
+  {{- include "common.addon.tailscale.rolebinding" . | nindent 0 }}
+
 {{- end -}}
