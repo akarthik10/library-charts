@@ -15,7 +15,13 @@ env:
     value: tailscale-{{ include "common.names.fullname" $ }}
   - name: TS_USERSPACE
     value: false
-  {{- if not (hasKey . "TS_HOSTNAME") }}
+  {{- $hasTSHostname := false }}
+  {{- range . }}
+  {{- if eq .name "TS_HOSTNAME" }}
+  {{- $hasTSHostname = true }}
+  {{- end }}
+  {{- end }}
+  {{- if not $hasTSHostname }}
   - name: TS_HOSTNAME
     value: "{{ include "common.names.fullname" $ }}"
   {{- end }}
