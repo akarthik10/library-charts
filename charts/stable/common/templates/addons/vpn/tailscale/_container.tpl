@@ -15,8 +15,10 @@ env:
     value: tailscale-{{ include "common.names.fullname" $ }}
   - name: TS_USERSPACE
     value: false
-  - name: TS_EXTRA_ARGS
-    value: "--hostname={{ include "common.names.fullname" $ }}"
+  {{- if not (hasKey . "TS_HOSTNAME") }}
+  - name: TS_HOSTNAME
+    value: "{{ include "common.names.fullname" $ }}"
+  {{- end }}
   {{- . | toYaml | nindent 2 }}
 {{- end }}
 {{- with .Values.addons.vpn.envFrom }}
